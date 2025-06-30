@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require('discord.js')
 
 const { color } = require('./../../config/color.json')
+const { hug } = require('./../../config/gif.json')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -15,9 +16,13 @@ module.exports = {
         const sender = interaction.user
 
         if (target.id !== sender.id) {
+
+            let hugGif = hug[Math.floor(Math.random() * hug.length)]
+
             const hugEmbed = new EmbedBuilder()
                 .setColor(color.default)
                 .setDescription(`${sender} hugged ${target}`)
+                .setImage(hugGif)
         
             await interaction.reply({ embeds: [hugEmbed] })
         }

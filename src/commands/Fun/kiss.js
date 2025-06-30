@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require('discord.js')
 
 const { color } = require('./../../config/color.json')
+const { kiss } = require('./../../config/gif.json')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -15,9 +16,13 @@ module.exports = {
         const sender = interaction.user
 
         if (target.id !== sender.id) {
+
+            let kissGif = kiss[Math.floor(Math.random() * kiss.length)]
+
             const kissEmbed = new EmbedBuilder()
                 .setColor(color.default)
                 .setDescription(`${sender} kissed ${target}`)
+                .setImage(kissGif)
         
             await interaction.reply({ embeds: [kissEmbed] })
         }
