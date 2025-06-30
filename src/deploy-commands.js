@@ -34,7 +34,7 @@ const rest = new REST().setToken(token);
 		)
 
 		console.log(`Successfully reloaded ${data.length} application (/) commands.`)
-	} catch (error) {
+	} catch(error) {
 		console.error(`Error loading commands: ${error}`)
 	}
 })()

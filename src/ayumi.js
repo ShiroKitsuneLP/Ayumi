@@ -7,6 +7,7 @@ const { token } = require('./config/config.json')
 const ayumi = new Client({
     intents: [
         GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMembers,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent
     ]
@@ -46,7 +47,7 @@ ayumi.on(Events.InteractionCreate, async interaction => {
 	}
 
 	try {
-		await command.execute(interaction)
+		await command.execute(interaction, ayumi)
 	} catch(error) {
 		console.error(error)
 		if(interaction.replied || interaction.deferred) {
