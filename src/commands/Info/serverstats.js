@@ -17,7 +17,7 @@ module.exports = {
         const bots = members.filter(m => m.user.bot)
 
         // Channels
-        const channels = guild.channels.cache.filter(c => c.type != ChannelType.GuildCategory)
+        const channels = guild.channels.cache.filter(c => c.type !== ChannelType.GuildCategory)
         const textChannels = channels.filter(c => c.type === ChannelType.GuildText)
         const voiceChannels = channels.filter(c => c.type === ChannelType.GuildVoice)
 
