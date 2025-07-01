@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require('discord.js')
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
 
 const { color } = require('./../../config/color.json')
 
@@ -7,9 +7,9 @@ module.exports = {
         .setName('about')
         .setDescription('Information about the Bot.'),
     async execute(interaction, ayumi) {
-
         let totalUser = 0
 
+        // All Users over all Servers
         for(const guild of ayumi.guilds.cache.values()) {
             try {
                 const members = await guild.members.fetch()
@@ -32,7 +32,9 @@ module.exports = {
             .addFields(
                 { name: 'Bot ID', value: ayumi.user.id, inline: true },
                 { name: 'Version', value: 'v1.0.0', inline: true },
+                { name: '', value: '' },
                 { name: 'Developer', value: '[ShiroKitsune](https://github.com/ShiroKitsuneLP)' },
+                { name: '', value: '' },
                 { name: 'Server', value: `${ayumi.guilds.cache.size}`, inline: true},
                 { name: 'Users', value: `${totalUser}`, inline: true},
             )
