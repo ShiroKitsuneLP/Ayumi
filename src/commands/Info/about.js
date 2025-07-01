@@ -33,7 +33,7 @@ module.exports = {
                 { name: 'Bot ID', value: ayumi.user.id, inline: false },
 
                 { name: 'Bot Version', value: 'v1.0.0', inline: true },
-                { name: 'discord.js', value: version, inline: true },
+                { name: 'discord.js', value: `v${version}`, inline: true },
                 { name: 'Node.js', value: process.version, inline: true },
 
                 { name: 'Servers', value: `${ayumi.guilds.cache.size}`, inline: true },
