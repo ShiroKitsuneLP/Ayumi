@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
+const { SlashCommandBuilder, EmbedBuilder, version } = require('discord.js')
 
 const { color } = require('./../../config/color.json')
 
@@ -7,14 +7,14 @@ module.exports = {
         .setName('about')
         .setDescription('Information about the Bot.'),
     async execute(interaction, ayumi) {
-        let totalUser = 0
+        let totalUsers = 0
 
         // All Users over all Servers
         for(const guild of ayumi.guilds.cache.values()) {
             try {
                 const members = await guild.members.fetch()
                 const humans = members.filter(member => !member.user.bot)
-                totalUser += humans.size
+                totalUsers += humans.size
             } catch(error) {
                 console.error(`Error loading ${guild.name}:`, error)
             }
@@ -27,16 +27,24 @@ module.exports = {
                 name: ayumi.user.username,
                 iconURL: ayumi.user.displayAvatarURL({ dynamic: true, size: 2048 })
             })
-            .setDescription('All Information about the Bot.')
+            .setDescription('A few little things about me~')
             .setThumbnail(ayumi.user.displayAvatarURL({ dynamic: true, size: 2048 }))
             .addFields(
-                { name: 'Bot ID', value: ayumi.user.id, inline: true },
-                { name: 'Version', value: 'v1.0.0', inline: true },
-                { name: '', value: '' },
-                { name: 'Developer', value: '[ShiroKitsune](https://github.com/ShiroKitsuneLP)' },
-                { name: '', value: '' },
-                { name: 'Server', value: `${ayumi.guilds.cache.size}`, inline: true},
-                { name: 'Users', value: `${totalUser}`, inline: true},
+                { name: 'Bot ID', value: ayumi.user.id, inline: false },
+
+                { name: 'Bot Version', value: 'v1.0.0', inline: true },
+                { name: 'discord.js', value: version, inline: true },
+                { name: 'Node.js', value: process.version, inline: true },
+
+                { name: 'Servers', value: `${ayumi.guilds.cache.size}`, inline: true },
+                { name: 'Users', value: `${totalUsers}`, inline: true },
+
+                { name: 'Developer', value: '[ShiroKitsune](https://github.com/ShiroKitsuneLP)', inline: false },
+
+                { name: '', value: '', inline: false },
+
+                { name: 'Personality', value: 'Cute, helpful & always online~', inline: false },
+                { name: 'Powered by', value: 'JavaScript & sweet server hugs~', inline: false }
             )
 
         await interaction.reply({ embeds: [aboutEmbed] })
