@@ -13,6 +13,7 @@ module.exports = {
                 .setDescription('The user you want to Hug.')
                 .setRequired(true)
         ),
+    usage: '/hug <User>',
     async execute(interaction, ayumi) {
         const target = interaction.options.getUser('target')
         const sender = interaction.user
@@ -24,7 +25,7 @@ module.exports = {
                     name: ayumi.user.username,
                     iconURL: ayumi.user.displayAvatarURL({ dynamic: true, size: 2048 })
                 })
-                .setDescription(`Oops! You can’t hug yourself, silly! \n Try hugging someone else~`)
+                .setDescription('Oops! You can\'t hug yourself, silly! \n Try hugging someone else~')
 
             return await interaction.reply({ embeds: [errorHugEmbed], flags: MessageFlags.Ephemeral })
         }

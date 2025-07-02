@@ -6,6 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('serverstats')
         .setDescription('Information about the Server'),
+    usage: '/serverstats',
     async execute(interaction, ayumi) {
         const guild = interaction.guild
         // Owner

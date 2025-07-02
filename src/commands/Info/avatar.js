@@ -12,6 +12,7 @@ module.exports = {
                 .setDescription('The User you want the Avatar from.')
                 .setRequired(true)
         ),
+    usage: '/avatar <User>',
     async execute(interaction, ayumi) {
         const target = interaction.options.getUser('target')
 

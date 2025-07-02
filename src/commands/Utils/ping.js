@@ -6,6 +6,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Replies with Pong.'),
+	usage: '/ping',
 	async execute(interaction, ayumi) {
 		const pingEmbed = new EmbedBuilder()
 			.setColor(color.default)

@@ -19,7 +19,7 @@ module.exports = {
                 .setRequired(false)
         )
         .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
-
+    usage: '/ban <User> [Reason]',
     async execute(interaction, ayumi) {
         const targetUser = interaction.options.getUser('target')
         const reason = interaction.options.getString('reason') || 'No reason provided.'
@@ -35,7 +35,7 @@ module.exports = {
                     name: ayumi.user.username,
                     iconURL: ayumi.user.displayAvatarURL({ dynamic: true, size: 2048 })
                 })
-                .setDescription('I couldn’t find that user in this server.')
+                .setDescription('I couldn\'t find that user in this server.')
 
             return await interaction.reply({ embeds: [notFoundEmbed], flags: MessageFlags.Ephemeral })
         }
@@ -48,7 +48,7 @@ module.exports = {
                     name: ayumi.user.username,
                     iconURL: ayumi.user.displayAvatarURL({ dynamic: true, size: 2048 })
                 })
-                .setDescription('You can’t ban this user.\nThey might have a higher role or I lack permissions.')
+                .setDescription('You can\'t ban this user.\nThey might have a higher role or I lack permissions.')
 
             return await interaction.reply({ embeds: [cannotBanEmbed], flags: MessageFlags.Ephemeral })
         }

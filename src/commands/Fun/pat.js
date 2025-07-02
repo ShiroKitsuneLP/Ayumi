@@ -13,18 +13,19 @@ module.exports = {
                 .setDescription('The user you want to Pat.')
                 .setRequired(true)
         ),
+    usage: '/pat <User>',
     async execute(interaction, ayumi) {
         const target = interaction.options.getUser('target')
         const sender = interaction.user
 
-        if(target.id !== sender.id) {
+        if(target.id === sender.id) {
             const errorPatEmbed = new EmbedBuilder()
                 .setColor(color.error)
                 .setAuthor({
                     name: ayumi.user.username,
                     iconURL: ayumi.user.displayAvatarURL({ dynamic: true, size: 2048 })
                 })
-                .setDescription(`Oops! You can’t pat yourself, silly! \n Try patting someone else~`)
+                .setDescription('Oops! You can\'t pat yourself, silly! \n Try patting someone else~')
 
             return await interaction.reply({ embeds: [errorPatEmbed], flags: MessageFlags.Ephemeral })
         }

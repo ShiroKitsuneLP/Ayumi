@@ -6,6 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('about')
         .setDescription('Information about the Bot.'),
+    usage: '/about',
     async execute(interaction, ayumi) {
         let totalUsers = 0
 
