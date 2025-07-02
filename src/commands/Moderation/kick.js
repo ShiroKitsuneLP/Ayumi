@@ -54,6 +54,17 @@ module.exports = {
         }
 
         try {
+            const kickDmEmbed = new EmbedBuilder()
+                .setColor(color.error)
+                .setTitle(`You have been kicked from the server **${interaction.guild.name}**!`)
+                .setAuthor({
+                    name: ayumi.user.username,
+                    iconURL: ayumi.user.displayAvatarURL({ dynamic: true, size: 2048 })
+                })
+                .setDescription(`**Reason:** ${reason}`)
+            
+            await target.send({ embeds: [kickDmEmbed] })
+
             await target.kick(reason)
 
             const kickEmbed = new EmbedBuilder()
