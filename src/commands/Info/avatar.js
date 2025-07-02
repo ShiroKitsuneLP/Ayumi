@@ -7,15 +7,21 @@ module.exports = {
         .setName('avatar')
         .setDescription('Replies with the Avatar from the User.')
         .addUserOption(option =>
-            option.setName('target')
-            .setDescription('The User you want the Avatar from.')
-            .setRequired(true)),
-    async execute(interaction) {
+            option
+                .setName('target')
+                .setDescription('The User you want the Avatar from.')
+                .setRequired(true)
+        ),
+    async execute(interaction, ayumi) {
         const target = interaction.options.getUser('target')
 
         const avatarEmbed = new EmbedBuilder()
             .setColor(color.default)
             .setTitle(`${target.username}'s Avatar`)
+            .setAuthor({
+                name: ayumi.user.username,
+                iconURL: ayumi.user.displayAvatarURL({ dynamic: true, size: 2048 })
+            })
             .setImage(target.displayAvatarURL({ dynamic: true, size: 2048 }))
         
         await interaction.reply({ embeds: [avatarEmbed] })

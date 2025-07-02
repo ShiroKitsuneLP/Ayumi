@@ -15,8 +15,8 @@ module.exports = {
                 const members = await guild.members.fetch()
                 const humans = members.filter(member => !member.user.bot)
                 totalUsers += humans.size
-            } catch(error) {
-                console.error(`Error loading ${guild.name}:`, error)
+            } catch(err) {
+                console.error(`Error loading ${guild.name}:`, err)
             }
         }
 

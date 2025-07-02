@@ -6,10 +6,14 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Replies with Pong.'),
-	async execute(interaction) {
+	async execute(interaction, ayumi) {
 		const pingEmbed = new EmbedBuilder()
 			.setColor(color.default)
 			.setTitle('Pong!')
+			.setAuthor({
+                name: ayumi.user.username,
+                iconURL: ayumi.user.displayAvatarURL({ dynamic: true, size: 2048 })
+            })
 			.setFields(
 				{ name: 'Ping', value: 'Pinging...', inline: true },
 				{ name: 'API Latency', value: 'Pinging...', inline: true }
@@ -26,5 +30,5 @@ module.exports = {
 		)
 
 		await interaction.editReply({ embeds: [pingEmbed] })
-	},
+	}
 }
