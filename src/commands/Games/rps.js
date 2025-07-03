@@ -17,7 +17,7 @@ module.exports = {
                         { name: 'Scissors', value: 'scissors' }
                     )
         ),
-    usage: '/rps <>',
+    usage: '/rps <choice>',
     async execute(interaction, ayumi) {
         const playerChoice = interaction.options.getString('choice')
 
@@ -30,6 +30,7 @@ module.exports = {
         const botChoice = choices[Math.floor(Math.random() * choices.length)]
 
         let result
+        
         if(playerChoice === botChoice) {
             result = 'It\'s a draw!'
         } else if((playerChoice === 'rock' && botChoice === 'scissors') || (playerChoice === 'paper' && botChoice === 'rock') || (playerChoice === 'scissors' && botChoice === 'paper')) {

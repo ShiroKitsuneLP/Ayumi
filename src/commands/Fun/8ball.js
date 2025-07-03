@@ -11,8 +11,7 @@ module.exports = {
                 .setName('question')
                 .setDescription('What is your question?')
                 .setRequired(true)
-        )
-        .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
+        ),
     usage: '/8ball <question>',
     async execute(interaction, ayumi) {
         const question = interaction.options.getString('question')
