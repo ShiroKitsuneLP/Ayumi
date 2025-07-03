@@ -15,7 +15,7 @@ module.exports = {
                 name: ayumi.user.username,
                 iconURL: ayumi.user.displayAvatarURL({ dynamic: true, size: 2048 })
             })
-			.setFields(
+			.addFields(
 				{ name: 'Ping', value: 'Pinging...', inline: true },
 				{ name: 'API Latency', value: 'Pinging...', inline: true }
 			)
