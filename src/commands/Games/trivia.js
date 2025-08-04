@@ -107,6 +107,7 @@ module.exports = {
             })
             .setDescription(`**Question:**\n${randomQuestion.question}`)
             .setThumbnail(ayumi.user.displayAvatarURL({ dynamic: true, size: 2048 }))
+            .setFooter({ text: `Question-ID: ${randomQuestion.id}` })
 
         interaction.client.trivia = {
             answer: randomQuestion.answer,
